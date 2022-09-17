@@ -55,9 +55,9 @@ const HomePage = () => {
         <Title level={3} className="home-title">
           Top 10 Crypto Currencies in the world
         </Title>
-        <Title level={5} className="show-more">
+        <h5 className="show-more">
           <Link to="./cryptocurrencies">Show more</Link>
-        </Title>
+        </h5>
       </div>
       <Cryptocurrencies simplified={true} />
 
@@ -65,9 +65,9 @@ const HomePage = () => {
         <Title level={2} className="home-title">
           Latest Crypto Currencies News
         </Title>
-        <Title level={3} className="show-more">
+        <h5 className="show-more">
           <Link to="./news">Show more</Link>
-        </Title>
+        </h5>
       </div>
       <News simplified />
     </div>

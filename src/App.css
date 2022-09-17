@@ -133,7 +133,9 @@ a:hover {
     font-size: 1.4rem !important;
   }
   .show-more {
-    font-size: 1.3rem !important;
+    font-size: 14px !important;
+    width: 100px;
+    margin-top: 28px;
   }
 }
 
@@ -350,7 +352,7 @@ a:hover {
   margin-top: 40px;
 }
 .show-more {
-  margin-top: 0px !important;
+  /* margin-top: 0px !important; */
 }
 .exchange-image {
   margin: 0px 10px !important;
