@@ -36,14 +36,32 @@ function App() {
             level={5}
             style={{ color: 'white', textAlign: 'center' }}
           >
-            Cryptoverse <br />
-            All rights reserved
+            Cryptowall-2022 <br />
           </Typography.Title>
-          <Space>
-            <Link to="/">Home</Link>
-            <Link to="/exchanges">Exchanges</Link>
-            <Link to="/news">News</Link>
-          </Space>
+          <p style={{ color: 'gray' }}>All rights reserved</p>
+
+          <div
+            style={{
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Space>
+              <Link to="/">Home</Link>
+              <Link to="/exchanges">Exchanges</Link>
+              <Link to="/news">News</Link>
+            </Space>
+            <a
+              style={{}}
+              href="https://ishraque-dev.netlify.app/"
+              target="_blank"
+              rel=" noreferrer"
+            >
+              Developed by~ Ishraque
+            </a>
+          </div>
         </div>
       </div>
     </div>

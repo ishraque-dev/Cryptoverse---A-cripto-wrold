@@ -16,11 +16,11 @@ const Navbar = () => {
       <div className="logo-container">
         <Avatar src={icon} size="large" />
         <Typography.Title level={2} className="logo">
-          <Link to="/">Cryptoverse</Link>
+          <Link to="/">Cryptowall</Link>
         </Typography.Title>
         {/* <Button className="menu-control-container"></Button> */}
       </div>
-      <Menu theme="dark">
+      <Menu theme="dark" style={{ background: '#181818', color: 'white' }}>
         <Menu.Item icon={<HomeOutlined />}>
           <Link to="/">Home</Link>
         </Menu.Item>

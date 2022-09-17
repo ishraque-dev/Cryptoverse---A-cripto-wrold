@@ -10,6 +10,7 @@ const Cryptocurrencies = ({ simplified }) => {
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState([]);
   const [notFund, setNotFund] = useState(false);
+
   // fully functional search system
   useEffect(() => {
     const filteredData = cryptosList?.data?.coins.filter((coin) =>
@@ -35,12 +36,14 @@ const Cryptocurrencies = ({ simplified }) => {
 
   return (
     <>
-      <div className="search-crypto">
-        <Input
-          placeholder="Search Crypto Currencies"
-          onChange={(e) => setSearchItem(e.target.value)}
-        />
-      </div>
+      {!simplified && (
+        <div className="search-crypto">
+          <Input
+            placeholder="Search Crypto Currencies"
+            onChange={(e) => setSearchItem(e.target.value)}
+          />
+        </div>
+      )}
       <div>{notFund && <h2>No items found!</h2>}</div>
       <Row gutter={[32, 32]} className="crypto-card-container">
         {cryptos?.map((currency) => (
