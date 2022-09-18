@@ -16,7 +16,7 @@ const News = ({ simplified }) => {
     newsCategory: newsCategory,
     count: simplified ? 6 : 12,
   });
-  console.log(cryptoNews);
+
   if (!cryptoNews?.value) return <Loader />;
   return (
     <Row gutter={[24, 24]}>
@@ -46,7 +46,6 @@ const News = ({ simplified }) => {
         </Col>
       )}
       {cryptoNews.value.map((news, index) => {
-        console.log(news?.datePublished);
         return (
           <Col xs={24} sm={12} lg={8} key={index}>
             <Card hoverable className="news-card">
