@@ -50,36 +50,16 @@ const Navbar = () => {
       </div>
       {activeMenu && (
         <Menu theme="dark" style={{ background: '#181818', color: 'white' }}>
-          <Menu.Item
-            icon={<HomeOutlined />}
-            onClick={() => {
-              setActiveMenu(false);
-            }}
-          >
+          <Menu.Item icon={<HomeOutlined />}>
             <Link to="/">Home</Link>
           </Menu.Item>
-          <Menu.Item
-            icon={<FundOutlined />}
-            onClick={() => {
-              setActiveMenu(false);
-            }}
-          >
+          <Menu.Item icon={<FundOutlined />}>
             <Link to="/cryptocurrencies">Cryptocurrencies</Link>
           </Menu.Item>
-          <Menu.Item
-            icon={<MoneyCollectOutlined />}
-            onClick={() => {
-              setActiveMenu(false);
-            }}
-          >
+          <Menu.Item icon={<MoneyCollectOutlined />}>
             <Link to="/exchanges">Exchanges</Link>
           </Menu.Item>
-          <Menu.Item
-            icon={<BulbOutlined />}
-            onClick={() => {
-              setActiveMenu(false);
-            }}
-          >
+          <Menu.Item icon={<BulbOutlined />}>
             <Link to="/news">News</Link>
           </Menu.Item>
         </Menu>
