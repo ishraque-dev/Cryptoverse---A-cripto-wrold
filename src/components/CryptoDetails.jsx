@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import millify from 'millify';
 import { Col, Row, Typography, Select } from 'antd';
 import Loader from './Loader';
+import LineChart from './LineChart';
 import {
   MoneyCollectOutlined,
   DollarCircleOutlined,
@@ -15,21 +16,28 @@ import {
   NumberOutlined,
   ThunderboltOutlined,
 } from '@ant-design/icons';
-import { useGetCryptoDetailsQuery } from '../services/cryptoAPI';
+import {
+  useGetCryptoDetailsQuery,
+  useGetCryptoHistoryQuery,
+} from '../services/cryptoAPI';
 const { Title, Text } = Typography;
 const { Option } = Select;
 
 const CryptoDetails = () => {
+  const [timePeriod, setTimePeriod] = useState('7d');
   const { coinId } = useParams();
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
-
+  const { data: coinHistory, isFetching: loadingData } =
+    useGetCryptoHistoryQuery({
+      coinId,
+      timePeriod,
+    });
   const cryptoDetails = data?.data?.coin;
 
-  console.log(cryptoDetails);
+  console.log(coinHistory);
   const volume = cryptoDetails && cryptoDetails['24hVolume'];
 
-  const [timePeriod, setTimePeriod] = useState('7d');
-  const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
+  const time = ['1h', '3h', '12h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
   const stats = [
     {
       title: 'Price to USD',
@@ -96,6 +104,7 @@ const CryptoDetails = () => {
     },
   ];
   if (isFetching) return <Loader />;
+  if (loadingData) return <Loader />;
   return (
     <Col className="coin-details-container">
       <Col className="coin-heading-container">
@@ -119,7 +128,11 @@ const CryptoDetails = () => {
           return <Option key={date}>{date}</Option>;
         })}
       </Select>
-      {/* line chart */}
+      <LineChart
+        coinHistory={coinHistory}
+        currentPrice={millify(cryptoDetails.price)}
+        coinName={cryptoDetails.name}
+      />
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistics-heading">
@@ -150,7 +163,7 @@ const CryptoDetails = () => {
           </Col>
           {genericStats.map(({ icon, title, value }) => {
             return (
-              <Col className="coin-stats">
+              <Col className="coin-stats" key={title}>
                 <Col className="coin-stats-name">
                   <Text>{icon}</Text>
                   <Text>{title}</Text>
@@ -178,7 +191,7 @@ const CryptoDetails = () => {
                 <Title level={5} className="link-name">
                   {link.type}
                 </Title>
-                <a href={link.url} target="_blank" rel="noreffer">
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
                   {link.name}
                 </a>
               </Row>
