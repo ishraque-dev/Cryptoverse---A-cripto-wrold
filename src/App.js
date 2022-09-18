@@ -1,5 +1,5 @@
 import './App.css';
-import { useNavigate, Route, Link, Routes } from 'react-router-dom';
+import { Route, Link, Routes } from 'react-router-dom';
 import { Layout, Typography, Space } from 'antd';
 import HomePage from './components/HomePage';
 import Exchanges from './components/Exchanges';
