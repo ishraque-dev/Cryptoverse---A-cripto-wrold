@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useEffect, useRef } from 'react';
 import millify from 'millify';
 import { Typography, Row, Col, Statistic } from 'antd';
 import { Link } from 'react-router-dom';
@@ -9,12 +9,16 @@ import Loader from './Loader';
 const { Title } = Typography;
 
 const HomePage = () => {
+  const divRef = useRef(null);
   const { data, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: 'smooth' });
+  });
   if (isFetching) return <Loader />;
 
   return (
-    <div>
+    <div ref={divRef}>
       <Title level={2} className="heading">
         Global Crypto Stats
       </Title>

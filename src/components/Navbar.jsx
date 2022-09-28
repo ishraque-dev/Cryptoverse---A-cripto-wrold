@@ -13,6 +13,7 @@ import {
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(null);
+
   useEffect(() => {
     const handleResize = () => {
       setScreenSize(window.innerWidth);
@@ -30,6 +31,7 @@ const Navbar = () => {
       setActiveMenu(true);
     }
   }, [screenSize]);
+
   return (
     <div className="nav-container">
       <div className="logo-container">
