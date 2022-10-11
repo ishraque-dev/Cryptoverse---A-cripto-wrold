@@ -102,6 +102,7 @@ const CryptoDetails = () => {
       icon: <ExclamationCircleOutlined />,
     },
   ];
+
   if (isFetching) return <Loader />;
   if (loadingData) return <Loader />;
   return (

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import icon from '../assets/cryptocurrency.png';
+import { useLocation } from 'react-router-dom';
 import { Button, Menu, Typography, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
 import {
@@ -13,7 +14,7 @@ import {
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(null);
-
+  const divRef = useRef(true);
   useEffect(() => {
     const handleResize = () => {
       setScreenSize(window.innerWidth);
@@ -31,9 +32,11 @@ const Navbar = () => {
       setActiveMenu(true);
     }
   }, [screenSize]);
-
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, []);
   return (
-    <div className="nav-container">
+    <div ref={divRef} className="nav-container">
       <div className="logo-container">
         <Avatar src={icon} size="large" />
         <Typography.Title level={2} className="logo">
