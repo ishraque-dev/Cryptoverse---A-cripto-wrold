@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import icon from '../assets/cryptocurrency.png';
-import { useLocation } from 'react-router-dom';
+
 import { Button, Menu, Typography, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
 import {
